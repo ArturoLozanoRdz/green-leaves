@@ -1,0 +1,40 @@
+body{
+    height: 100%;
+    margin-top: 75px;
+    border: 0px dotted black;
+}
+
+#header{
+    width: 700px;
+    height: 150px;
+    margin: auto;
+    display: table;
+    background: linear-gradient(rgb(0, 255, 0),rgb(0, 200, 0));
+    border-radius: 30px;
+    box-shadow: 5px 5px 2px grey;
+    border: inherit;
+}
+
+h1{
+    color: white;
+    font-size: 50px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border: inherit;
+}
+
+img{
+    max-height: 100px;
+    max-width: 100%;
+    display: table-cell;
+    margin-top: 20px;
+    border: inherit;
+}
+
+#content{
+    width: 700px;
+    margin: auto;
+    margin-top: 20px;
+    border: inherit;
+}

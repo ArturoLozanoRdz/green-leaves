@@ -1,19 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="green-leaves">
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+		<script src="app.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		<script src="vs-google-autocomplete.js"></script>
+
 		<title>Green Leaves</title>
 	</head>
-	<body>
-		<h1>Green Leaves</h1>
-		<form>
-			Nombre:<input type="text" name="nombre" /><br />
-			E-mail:<input type="text" name="email" /><br />
-			Telefono:<input type="text" name="telefono" /><br />
-			Fecha:<input type="text" name="fecha" /><br />
-			Ciudad y Estado:<input type="text" name="ciudad" /><br />
-			<input type="submit" value="Enviar" />
-		</form>
-		{{10+10}}
+	<body >
+		<div id="header">
+			<h1>Green Leaves</h1>
+			<img src="green-leaf.png">
+		</div>
+		<div id="content" ng-controller="content-controller">
+			<form name="myForm" ng-hide="hideForm" ng-submit="validateForm(myForm.$valid)" novalidate>
+				<table>
+					<tr>
+						<td>
+							<label>Nombre:</label>
+						</td>
+						<td>
+							<input name="name" ng-model="name" type="text" size="40" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Email:</label>
+						</td>
+						<td>
+							<input ng-model="email" type="email" size="40" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Telefono:</label>
+						</td>
+						<td>
+							<input ng-model="phone" type="number" size="40" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Fecha:</label>
+						</td>
+						<td>
+							<input ng-model="date" type="date" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Ciudad y Estado:</label>
+						</td>
+						<td>
+							<input vs-google-autocomplete="{ types:['(cities)'] }"
+							ng-model="city" 
+							type="text"
+							size="40"
+							required
+							name="city"
+							id="city"
+							class="form-control" 
+							placeholder="Enter city name">
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td>
+							<input type="submit" value="Enviar">
+						</td>
+					</tr>
+				</table>
+				
+			</form>
+			<div id="resultado" name="resultado" ng-hide="hideResult">
+				<p>Estimado <b>{{name}}</b>,</p>
+				<p>Hemos recibido sus datos y nos pondremos en contacto con usted a la brevedad posible.
+					Enviaremos un correo con informacion a su cuenta: <u style="color: blue" >{{email}}</u>
+				</p>
+				<p align="right">Atte.<br/><b style="color: green" >Green Leaves</b><br/><i>{{city}}</i> a {{date}}</p>
+			</div>
+		</div>
 	</body>
 </html>
